@@ -1,0 +1,3 @@
+GET FIRST CERTIFICATE WITH THIS OPENSSL COMMAND
+openssl s_client  -connect web.cryptohack.org:443
+NEXT STEP IN THE challenge7 file
