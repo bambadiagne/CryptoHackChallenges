@@ -9,7 +9,7 @@ r = remote('socket.cryptohack.org', 13377, level = 'debug')
 
 def json_recv():
     line = r.recvline()
-    return json.loads(line.decode())
+    return json.loads(line.decode("utf-8"))
 
 def json_send(hsh):
     request = json.dumps(hsh).encode()
