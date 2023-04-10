@@ -6,16 +6,20 @@ PORT = 13377
 
 tn = telnetlib.Telnet(HOST, PORT)
 
+
 def readline():
     return tn.read_until(b"\n")
+
 
 def json_recv():
     line = readline()
     return json.loads(line.decode())
 
+
 def json_send(hsh):
     request = json.dumps(hsh).encode()
     tn.write(request)
+
 
 received = json_recv()
 

@@ -15,11 +15,13 @@ ct = 243251053617903760309941844835411292373350655973075480264001352919865180151
 flag = b"XXXXXXXXXXXXXXXXXXXXXXX"
 # pt = bytes_to_long(flag)
 # ct = int(pow(pt,1/e))
+
+
 def lrack(n, k=2):
     """Racine kième entière d'un nb entier n de taille quelconque
        Génère une exception "ValueError" si n est négatif et k paire.
     """
- 
+
     # initialisation du signe et traitement des  cas particuliers
     signe = +1
     if n < 2:
@@ -31,14 +33,14 @@ def lrack(n, k=2):
                 signe, n = -1, abs(n)
         else:
             return n  # ici n = 0 ou 1
- 
+
     # trouve une valeur approchée de la racine (important pour les grds nb)
     rac1, i = n, 0  # i = compteur du nb de positions binaires utilisées
     while rac1 != 0:
         rac1 >>= 1
         i += 1
     rac1 = 1 << (i // k)
- 
+
     # calcul de la racine en partant de la racine approchée rac1
     km1 = k - 1  # précalcul pour gagner du temps
     delta = n
@@ -50,11 +52,13 @@ def lrack(n, k=2):
             return -rac1
         delta = abs(rac2 - rac1)  # on garde pour la prochaine boucle
         rac1 = rac2
+
+
 print(f"n = {n}")
 print(f"e = {e}")
 print(f"ct = {ct}")
 
-pt = lrack(ct,3)
+pt = lrack(ct, 3)
 decrypted = long_to_bytes(pt)
 print(decrypted)
 

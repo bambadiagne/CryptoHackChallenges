@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 from Crypto.Util.number import bytes_to_long, long_to_bytes
-from utils import listener # this is cryptohack's server-side module and not part of python
+# this is cryptohack's server-side module and not part of python
+from utils import listener
 import base64
 import codecs
 import random
@@ -29,7 +30,8 @@ class Challenge():
         encoding = random.choice(ENCODINGS)
 
         if encoding == "base64":
-            encoded = base64.b64encode(self.challenge_words.encode()).decode() # wow so encode
+            encoded = base64.b64encode(
+                self.challenge_words.encode()).decode()  # wow so encode
         elif encoding == "hex":
             encoded = self.challenge_words.encode().hex()
         elif encoding == "rot13":
@@ -59,4 +61,3 @@ class Challenge():
 
 
 listener.start_server(port=13377)
-

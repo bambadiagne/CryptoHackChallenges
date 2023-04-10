@@ -12,7 +12,8 @@ def ned_to_pq(n, e, d):
         g = randrange(2, n - 1)
         for j in range(1, t + 1):
             x = pow(g, k >> j, n)
-            if x == 1: continue  # trivial
+            if x == 1:
+                continue  # trivial
             if pow(x, 2, n) == 1:
                 a = gcd(x - 1, n)
                 b = gcd(-x - 1, n)
@@ -22,5 +23,3 @@ def ned_to_pq(n, e, d):
 
 def bit_scan1(i):
     return (i & -i).bit_length() - 1
-
-
